@@ -99,6 +99,7 @@ export default function Home() {
         {
           list.map(({ title, views, thumbnail, link, recos }) => (
             <RecosCard
+              key={title}
               title={title}
               link={link}
               views={views}
