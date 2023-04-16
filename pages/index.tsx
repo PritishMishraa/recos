@@ -8,6 +8,7 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import RecosCard from "@/components/home/RecosCard";
+import CountingNumbers from "@/components/shared/counting-numbers";
 
 export default function Home() {
   return (
@@ -82,20 +83,14 @@ export default function Home() {
           </a>
         </motion.div>
       </motion.div>
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        animate="show"
-        viewport={{ once: true }}
-        variants={{
-          hidden: {},
-          show: {
-            transition: {
-              staggerChildren: 0.15,
-            },
-          },
-        }}
-        className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+      {/* <div className="flex flex-col items-center justify-center w-full py-24 bg-[#62369C]">
+        <CountingNumbers
+          className="font-mono text-7xl text-white"
+          value={100}
+          duration={2500} />
+          <Balancer className="text-white font-bold text-2xl">No. of Episodes Annotated</Balancer>
+      </div> */}
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {
           list.map(({ title, views, thumbnail, link, recos }) => (
             <RecosCard
@@ -108,7 +103,7 @@ export default function Home() {
             />
           ))
         }
-      </motion.div>
+      </div>
     </Layout >
   );
 }

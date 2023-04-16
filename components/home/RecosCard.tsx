@@ -1,5 +1,4 @@
-import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
-import { motion } from "framer-motion";
+import { useDemoModal } from "./demo-modal";
 
 export default function RecosCard({
     title,
@@ -14,23 +13,30 @@ export default function RecosCard({
     link: string;
     recos: string[];
 }) {
+    const { DemoModal, setShowDemoModal } = useDemoModal();
+
     return (
-        <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
+        <div>
             <img src={thumbnail} className="w-full object-cover object-center rounded-lg shadow-md" />
             <div className="relative px-4 -mt-8">
-                <div className="bg-white p-6 rounded-lg shadow-lg">
+                <div onClick={() => setShowDemoModal(true)} className="bg-white p-6 rounded-lg shadow-lg cursor-pointer">
+                    <DemoModal />
                     <div className="space-4 mx-auto">
                         {
                             recos.map((reco, index) => (
-                                <span key={index} className="bg-teal-200 text-teal-800 text-xs p-2 m-1 inline-block rounded-full  uppercase font-semibold tracking-wide">
-                                    {reco}
-                                </span>
+                                <>
+                                    <div
+                                        key={index}
+                                        className="bg-teal-200 text-teal-800 text-xs p-2 m-1 inline-block rounded-full uppercase font-semibold tracking-wide">
+                                        {reco}
+                                    </div>
+                                </>
                             ))
                         }
                     </div>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
 // title: "Top 5 Hindi Books I Read In 2021",
